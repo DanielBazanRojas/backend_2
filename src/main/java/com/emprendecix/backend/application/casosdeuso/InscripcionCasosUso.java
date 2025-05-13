@@ -5,15 +5,18 @@ import com.emprendecix.backend.domain.model.Inscripcion;
 import com.emprendecix.backend.domain.ports.InscripcionService;
 import com.emprendecix.backend.domain.ports.InscripcionPersistencia;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 @Service
 @RequiredArgsConstructor
-public class InscripcionCasosUso {
+public class InscripcionCasosUso implements InscripcionService{
+    @Qualifier("inscripcionPersistencia")
     private final InscripcionPersistencia inscripcionPersistence;
 
+    @Override
     public Inscripcion crearInscripcion(Inscripcion inscripcion) {
         inscripcion.setEstado(EstadoInscripcion.PENDIENTE);
         inscripcion.setFechaCreacion(LocalDateTime.now());
