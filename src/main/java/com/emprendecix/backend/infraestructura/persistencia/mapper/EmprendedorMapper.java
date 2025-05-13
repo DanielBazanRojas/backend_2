@@ -6,33 +6,37 @@ import com.emprendecix.backend.infraestructura.persistencia.entidad.EmprendedorE
 public class EmprendedorMapper {
 
     public static Emprendedor toModel(EmprendedorEntidad entity) {
-        Emprendedor e = new Emprendedor();
-        e.setId(entity.getEmprId());
-        e.setUsuarioId(entity.getUsuarioId());
-        e.setNombre(entity.getEmprNombre());
-        e.setCorreo(entity.getEmprCorreo());
-        e.setDescripcion(entity.getEmprDescripcion());
-        e.setTelefono(entity.getEmprTelefono());
-        e.setUbicacion(entity.getEmprUbicacion());
-        e.setVerificado(entity.isEmprVerificado());
-        e.setImagen(entity.getEmprImagen());
-        e.setFechaCreacion(entity.getEmprFechaCreacion());
-        return e;
+        if (entity == null) {
+            return null;
+        }
+
+        return Emprendedor.builder()
+                .id(entity.getId())
+                .dni(entity.getDni())
+                .nombres(entity.getNombres())
+                .apellidos(entity.getApellidos())
+                .correo(entity.getCorreo())
+                .telefono(entity.getTelefono())
+                .direccion(entity.getDireccion())
+                .fechaRegistro(entity.getFechaRegistro())
+                .build();
     }
 
     public static EmprendedorEntidad toEntity(Emprendedor model) {
-        EmprendedorEntidad e = new EmprendedorEntidad();
-        e.setEmprId(model.getId());
-        e.setUsuarioId(model.getUsuarioId());
-        e.setEmprNombre(model.getNombre());
-        e.setEmprCorreo(model.getCorreo());
-        e.setEmprDescripcion(model.getDescripcion());
-        e.setEmprTelefono(model.getTelefono());
-        e.setEmprUbicacion(model.getUbicacion());
-        e.setEmprVerificado(model.isVerificado());
-        e.setEmprImagen(model.getImagen());
-        e.setEmprFechaCreacion(model.getFechaCreacion());
-        return e;
+        if (model == null) {
+            return null;
+        }
+
+        EmprendedorEntidad entity = new EmprendedorEntidad();
+        entity.setId(model.getId());
+        entity.setDni(model.getDni());
+        entity.setNombres(model.getNombres());
+        entity.setApellidos(model.getApellidos());
+        entity.setCorreo(model.getCorreo());
+        entity.setTelefono(model.getTelefono());
+        entity.setDireccion(model.getDireccion());
+        entity.setFechaRegistro(model.getFechaRegistro());
+
+        return entity;
     }
 }
-

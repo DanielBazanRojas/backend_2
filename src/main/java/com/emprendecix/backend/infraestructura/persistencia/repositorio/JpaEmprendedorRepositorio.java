@@ -13,9 +13,9 @@ import java.util.stream.Collectors;
 @Repository
 public class JpaEmprendedorRepositorio implements EmprendedorRepositorio {
 
-    private final SpringDataEmprendedorRepositorio jpaRepository;
+    private final EmprendedorRepository jpaRepository;
 
-    public JpaEmprendedorRepositorio(SpringDataEmprendedorRepositorio jpaRepository) {
+    public JpaEmprendedorRepositorio(EmprendedorRepository jpaRepository) {
         this.jpaRepository = jpaRepository;
     }
 

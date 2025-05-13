@@ -1,106 +1,39 @@
 package com.emprendecix.backend.infraestructura.persistencia.entidad;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tb_emprendedor", schema = "sc_emprendedores")
+@Table(name = "tb_emprendedor", schema = "sc_promemprendedores")
+@Getter
+@Setter
 public class EmprendedorEntidad {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long emprId;
+    @Column(name = "empr_id")
+    private Long id;
 
-    @Column(nullable = false)
-    private Long usuarioId;
+    @Column(name = "empr_dni", length = 8, nullable = false, unique = true)
+    private String dni;
 
-    private String emprNombre;
-    private String emprCorreo;
-    private String emprDescripcion;
-    private String emprTelefono;
-    private String emprUbicacion;
-    private boolean emprVerificado;
-    private String emprImagen;
-    private LocalDateTime emprFechaCreacion;
+    @Column(name = "empr_nombres", length = 100, nullable = false)
+    private String nombres;
 
-    // Getters y setters
-    public Long getEmprId() {
-        return emprId;
-    }
+    @Column(name = "empr_apellidos", length = 100, nullable = false)
+    private String apellidos;
 
-    public void setEmprId(Long emprId) {
-        this.emprId = emprId;
-    }
+    @Column(name = "empr_correo", length = 150, nullable = false, unique = true)
+    private String correo;
 
-    public Long getUsuarioId() {
-        return usuarioId;
-    }
+    @Column(name = "empr_telefono", length = 15)
+    private String telefono;
 
-    public void setUsuarioId(Long usuarioId) {
-        this.usuarioId = usuarioId;
-    }
+    @Column(name = "empr_direccion")
+    private String direccion;
 
-    public String getEmprNombre() {
-        return emprNombre;
-    }
-
-    public void setEmprNombre(String emprNombre) {
-        this.emprNombre = emprNombre;
-    }
-
-    public String getEmprCorreo() {
-        return emprCorreo;
-    }
-
-    public void setEmprCorreo(String emprCorreo) {
-        this.emprCorreo = emprCorreo;
-    }
-
-    public String getEmprDescripcion() {
-        return emprDescripcion;
-    }
-
-    public void setEmprDescripcion(String emprDescripcion) {
-        this.emprDescripcion = emprDescripcion;
-    }
-
-    public String getEmprTelefono() {
-        return emprTelefono;
-    }
-
-    public void setEmprTelefono(String emprTelefono) {
-        this.emprTelefono = emprTelefono;
-    }
-
-    public String getEmprUbicacion() {
-        return emprUbicacion;
-    }
-
-    public void setEmprUbicacion(String emprUbicacion) {
-        this.emprUbicacion = emprUbicacion;
-    }
-
-    public boolean isEmprVerificado() {
-        return emprVerificado;
-    }
-
-    public void setEmprVerificado(boolean emprVerificado) {
-        this.emprVerificado = emprVerificado;
-    }
-
-    public String getEmprImagen() {
-        return emprImagen;
-    }
-
-    public void setEmprImagen(String emprImagen) {
-        this.emprImagen = emprImagen;
-    }
-
-    public LocalDateTime getEmprFechaCreacion() {
-        return emprFechaCreacion;
-    }
-
-    public void setEmprFechaCreacion(LocalDateTime emprFechaCreacion) {
-        this.emprFechaCreacion = emprFechaCreacion;
-    }
+    @Column(name = "empr_fecha_registro")
+    private LocalDateTime fechaRegistro;
 }
